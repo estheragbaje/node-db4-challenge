@@ -13,7 +13,7 @@ exports.up = function(knex) {
     })
     .createTable("instruction_steps", table => {
       table.increments();
-      table.string("instructions,").notNullable();
+      table.string("instructions").notNullable();
       table
         .integer("step_number")
         .unsigned()
@@ -23,9 +23,7 @@ exports.up = function(knex) {
         .unsigned()
         .notNullable()
         .references("id")
-        .inTable("recipes");
-      // .onUpdate("CASCADE")
-      // .onDelete("CASCADE");
+        .inTable("recipes"); // .onUpdate("CASCADE") // .onDelete("CASCADE");
     })
     .createTable("recipe_book", table => {
       table.increments();
